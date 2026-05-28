@@ -1,0 +1,49 @@
+<svg viewBox="0 0 200 200" width="200" height="200" fill="none"
+     xmlns="http://www.w3.org/2000/svg" aria-label="Eye of God">
+
+  <!-- Freccia SU -->
+  <polyline points="100,18 115,38 100,32 85,38 100,18"
+    stroke="#00ff41" stroke-width="3" stroke-linejoin="round" fill="none"/>
+
+  <!-- Angolo in alto a sinistra -->
+  <polyline points="58,52 48,52 48,62"
+    stroke="#00ff41" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Angolo in alto a destra -->
+  <polyline points="142,52 152,52 152,62"
+    stroke="#00ff41" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Forma dell'occhio (ristretta al quadrato) -->
+  <path d="M48,100 C70,65 130,65 152,100 C130,135 70,135 48,100 Z"
+    stroke="#00ff41" stroke-width="3.5" fill="none"/>
+
+  <!-- Iride esterna -->
+  <circle cx="100" cy="100" r="23" stroke="#00ff41" stroke-width="3" fill="none"/>
+
+  <!-- Iride interna -->
+  <circle cx="100" cy="100" r="14" stroke="#00ff41" stroke-width="2.5" fill="none"/>
+
+  <!-- Pupilla -->
+  <circle cx="100" cy="100" r="8" fill="#00ff41"/>
+
+  <!-- Freccia SINISTRA -->
+  <polyline points="18,100 38,85 32,100 38,115 18,100"
+    stroke="#00ff41" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Freccia DESTRA -->
+  <polyline points="182,100 162,85 168,100 162,115 182,100"
+    stroke="#00ff41" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Angolo in basso a sinistra -->
+  <polyline points="58,148 48,148 48,138"
+    stroke="#00ff41" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Angolo in basso a destra -->
+  <polyline points="142,148 152,148 152,138"
+    stroke="#00ff41" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+  <!-- Freccia GIÙ -->
+  <polyline points="100,182 115,162 100,168 85,162 100,182"
+    stroke="#00ff41" stroke-width="3" stroke-linejoin="round" fill="none"/>
+
+</svg>

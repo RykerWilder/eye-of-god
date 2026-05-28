@@ -1,0 +1,108 @@
+import { ExternalLink, Link } from 'lucide-react'
+
+const linkGroups = [
+  {
+    category: 'OSINT & Recon',
+    links: [
+      { name: 'Shodan',          url: 'https://shodan.io',             desc: 'Internet-wide device & service scanner.' },
+      { name: 'Censys',          url: 'https://search.censys.io',      desc: 'Attack surface & exposure monitoring.' },
+      { name: 'Hunter.io',       url: 'https://hunter.io',             desc: 'Email finder and domain lookup.' },
+      { name: 'BuiltWith',       url: 'https://builtwith.com',         desc: 'Technology profiler for web targets.' },
+      { name: 'DNSDumpster',     url: 'https://dnsdumpster.com',       desc: 'DNS recon & domain mapping.' },
+    ],
+  },
+  {
+    category: 'Threat Intelligence',
+    links: [
+      { name: 'VirusTotal',      url: 'https://virustotal.com',        desc: 'Multi-AV file, URL & hash analysis.' },
+      { name: 'AbuseIPDB',       url: 'https://abuseipdb.com',         desc: 'IP reputation & abuse reporting.' },
+      { name: 'OTX AlienVault',  url: 'https://otx.alienvault.com',    desc: 'Open threat exchange & IoC feeds.' },
+      { name: 'URLhaus',         url: 'https://urlhaus.abuse.ch',      desc: 'Malicious URL tracking database.' },
+      { name: 'Threat Fox',      url: 'https://threatfox.abuse.ch',    desc: 'IoC sharing platform by abuse.ch.' },
+    ],
+  },
+  {
+    category: 'CVE & Vulnerability',
+    links: [
+      { name: 'NVD NIST',        url: 'https://nvd.nist.gov',          desc: 'National vulnerability database.' },
+      { name: 'CVE Mitre',       url: 'https://cve.mitre.org',         desc: 'Official CVE list and details.' },
+      { name: 'Exploit-DB',      url: 'https://exploit-db.com',        desc: 'Public exploits & vulnerability archive.' },
+      { name: 'Snyk Vuln DB',    url: 'https://security.snyk.io',      desc: 'Open source dependency vulns.' },
+    ],
+  },
+  {
+    category: 'Utilities & Tools',
+    links: [
+      { name: 'CyberChef',       url: 'https://gchq.github.io/CyberChef', desc: 'Encode, decode, transform data.' },
+      { name: 'JWT.io',          url: 'https://jwt.io',                desc: 'JWT token inspector and debugger.' },
+      { name: 'SSL Labs',        url: 'https://ssllabs.com/ssltest',   desc: 'SSL/TLS certificate grader.' },
+      { name: 'Regex101',        url: 'https://regex101.com',          desc: 'Regex builder and tester.' },
+      { name: 'RequestBin',      url: 'https://requestbin.com',        desc: 'HTTP request inspector & bin.' },
+    ],
+  },
+]
+
+export default function UtilityLinks() {
+  return (
+    <div className="h-full flex flex-col gap-5 min-h-0 overflow-auto">
+
+      {/* Page header */}
+      <div className="flex items-center justify-center gap-4 border border-[rgba(0,255,65,0.12)] bg-[#0d0d0d] px-5 py-4">
+        <Link size={20} className="text-[#00ff41] shrink-0" />
+        <div>
+          <p className="font-['Share_Tech_Mono'] text-[10px] uppercase tracking-[0.3em] text-[rgba(200,255,208,0.4)]">
+            Module
+          </p>
+          <h2 className="font-['Share_Tech_Mono'] text-3xl uppercase tracking-[0.1em] text-[#d8ffe0]">
+            Utility Links
+          </h2>
+        </div>
+      </div>
+
+      {/* Link groups */}
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+        {linkGroups.map(({ category, links }) => (
+          <section
+            key={category}
+            className="border border-[rgba(0,255,65,0.12)] bg-[#0d0d0d]/95"
+          >
+            {/* Category header */}
+            <div className="border-b border-[rgba(0,255,65,0.08)] px-5 py-3">
+              <p className="font-['Share_Tech_Mono'] text-[10px] uppercase tracking-[0.28em] text-[rgba(200,255,208,0.4)]">
+                {category}
+              </p>
+            </div>
+
+            {/* Links list */}
+            <ul className="divide-y divide-[rgba(0,255,65,0.05)]">
+              {links.map(({ name, url, desc }) => (
+                <li key={name}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start justify-between gap-4 px-5 py-4 transition hover:bg-[rgba(0,255,65,0.03)]"
+                  >
+                    <div className="min-w-0">
+                      <p className="font-['Share_Tech_Mono'] text-sm text-[#d8ffe0] group-hover:text-[#00ff41] transition-colors">
+                        {name}
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-[rgba(200,255,208,0.45)]">
+                        {desc}
+                      </p>
+                    </div>
+                    <ExternalLink
+                      size={13}
+                      className="shrink-0 mt-0.5 text-[rgba(200,255,208,0.2)] group-hover:text-[#00ff41] transition-colors"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+
+    </div>
+  )
+}
