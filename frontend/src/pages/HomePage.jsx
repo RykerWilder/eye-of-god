@@ -2,7 +2,7 @@ import { Radar, ScanSearch, Bug, Globe, Lock, TerminalSquare, ChevronRight } fro
 import { useNavigate } from 'react-router-dom'
 
 const toolCategories = [
-  { name: 'Recon',        icon: Radar,          desc: 'Subdomain discovery, OSINT, DNS lookup, WHOIS.' },
+  { name: 'Recon',        icon: Radar,          desc: 'Subdomain discovery, OSINT, Olehe, WHOIS.' },
   { name: 'Scanner',      icon: ScanSearch,     desc: 'Port scan, vulnerability check, headers audit.' },
   { name: 'Malware',      icon: Bug,            desc: 'Hash lookup, IOC parsing, sample triage entrypoint.' },
   { name: 'Threat Intel', icon: Globe,          desc: 'Feeds, CVE watchlists, actor tracking, IoC search.' },
@@ -11,7 +11,7 @@ const toolCategories = [
 ]
 
 const toolRoutes = {
-  'Threat Intel': '/threat-intel',
+  'Recon': '/recon',
 }
 
 export default function HomePage() {

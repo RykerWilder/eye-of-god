@@ -5,7 +5,7 @@ import './index.css'
 
 import Layout    from './components/Layout'
 import HomePage  from './pages/HomePage'
-import ThreatIntel from './pages/threatIntel/ThreatIntel'
+import Recon from './pages/recon/Recon'
 import UtilityLinks from './pages/UtilityLinks'
 
 createRoot(document.getElementById('root')).render(
@@ -14,7 +14,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
-          <Route path="/threat-intel" element={<ThreatIntel />} />
+          <Route path="/recon" element={<Recon />} />
           <Route path="utility-links" element={<UtilityLinks />} /> 
         </Route>
       </Routes>

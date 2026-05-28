@@ -123,7 +123,7 @@ export default function OsintPage() {
             <div className="flex justify-center items-center gap-2">
               <Radar size={25} className="text-[#00ff41] shrink-0" />
               <h2 className="font-['Share_Tech_Mono'] text-3xl uppercase tracking-[0.1em] text-[#d8ffe0]">
-                Threat Intel
+                Recon
               </h2>
             </div>
           </div>
