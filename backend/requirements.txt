@@ -1,5 +1,7 @@
-fastapi
-uvicorn
-httpx
-holehe
-pydantic
+et_xmlfile==2.0.0
+fastapi==0.136.3
+holehe==1.61
+pip-chill==1.0.5
+pydantic_core==2.46.4
+sherlock-project==0.16.0
+uvicorn==0.48.0
