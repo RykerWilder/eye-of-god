@@ -19,7 +19,7 @@ export default function HolehePanel({ onResult, onError, onLoading }) {
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "API Error");
-      onResult({ email, data });
+      onResult({ type: "holehe", email, data });
     } catch (err) {
       onError(err.message);
     } finally {
