@@ -89,7 +89,7 @@ export default function OsintPage() {
               Module
             </p>
             <h2 className="font-['Share_Tech_Mono'] text-3xl uppercase tracking-[0.1em] text-[#d8ffe0]">
-              Recon
+              Threat Intel
             </h2>
           </div>
         </div>
