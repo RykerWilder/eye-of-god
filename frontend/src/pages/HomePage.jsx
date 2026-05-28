@@ -12,6 +12,7 @@ const toolCategories = [
 
 const toolRoutes = {
   'Recon': '/recon',
+  'Threat Intel': '/threat-intel',
 }
 
 export default function HomePage() {

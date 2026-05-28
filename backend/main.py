@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import holehe, sherlock
+from routers import holehe, sherlock, abuseipdb
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI(title="CyberSec Dashboard API", version="1.0.0")
 
@@ -18,3 +21,4 @@ def health():
 
 app.include_router(holehe.router, prefix="/api/holehe", tags=["Recon"])
 app.include_router(sherlock.router, prefix="/api/sherlock", tags=["Recon"])
+app.include_router(abuseipdb.router, prefix="/api/abuseipdb", tags=["Threat Intel"])
