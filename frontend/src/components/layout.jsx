@@ -9,9 +9,21 @@ const tools = [
   { name: "Holehe", path: "/recon/", section: "Recon" },
   { name: "AbuseIPDB", path: "/threat-intel", section: "Threat Intel" },
 
-  { name: "VirusTotal", path: "/threat-intel/virustotal", section: "Threat Intel" },
-  { name: "AlienVault OTX", path: "/threat-intel/alienvault-otx", section: "Threat Intel" },
-  { name: "Have I Been Pwned", path: "/threat-intel/have-i-been-pwned", section: "Threat Intel" },
+  {
+    name: "VirusTotal",
+    path: "/threat-intel/virustotal",
+    section: "Threat Intel",
+  },
+  {
+    name: "AlienVault OTX",
+    path: "/threat-intel/alienvault-otx",
+    section: "Threat Intel",
+  },
+  {
+    name: "Have I Been Pwned",
+    path: "/threat-intel/have-i-been-pwned",
+    section: "Threat Intel",
+  },
 ];
 
 export default function Layout() {
@@ -24,9 +36,10 @@ export default function Layout() {
 
     if (!query) return [];
 
-    return tools.filter((tool) =>
-      tool.name.toLowerCase().includes(query) ||
-      tool.section.toLowerCase().includes(query)
+    return tools.filter(
+      (tool) =>
+        tool.name.toLowerCase().includes(query) ||
+        tool.section.toLowerCase().includes(query),
     );
   }, [search]);
 
@@ -100,12 +113,7 @@ export default function Layout() {
                 </h1>
               </div>
 
-              <div className="relative w-full lg:w-[480px]">
-                <Search
-                  size={18}
-                  className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-[rgba(0,255,65,0.65)]"
-                />
-
+              <div className="relative w-full lg:w-[360px]">
                 <input
                   type="text"
                   value={search}
@@ -118,7 +126,7 @@ export default function Layout() {
                     setTimeout(() => setIsOpen(false), 150);
                   }}
                   placeholder="Search tools..."
-                  className="w-full border border-[rgba(0,255,65,0.18)] bg-black/50 py-3 pl-11 pr-4 font-['Share_Tech_Mono'] text-sm text-[#d8ffe0] outline-none transition placeholder:text-[rgba(200,255,208,0.35)] focus:border-[rgba(0,255,65,0.45)]"
+                  className="h-14 w-full border border-[rgba(0,255,65,0.18)] bg-black/50 pl-11 pr-4 font-['Share_Tech_Mono'] text-sm text-[#d8ffe0] outline-none transition placeholder:text-[rgba(200,255,208,0.35)] focus:border-[rgba(0,255,65,0.45)]"
                 />
 
                 {isOpen && search.trim() !== "" && (
@@ -126,7 +134,7 @@ export default function Layout() {
                     {filteredTools.length > 0 ? (
                       filteredTools.map((tool) => (
                         <button
-                          key={tool.path}
+                          key={`${tool.name}-${tool.path}`}
                           type="button"
                           onClick={() => handleToolClick(tool.path)}
                           className="group flex w-full items-center justify-between border-b border-[rgba(0,255,65,0.08)] px-4 py-3 text-left transition last:border-b-0 hover:bg-[rgba(0,255,65,0.06)]"
