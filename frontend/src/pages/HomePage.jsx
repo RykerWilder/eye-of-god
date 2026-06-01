@@ -99,13 +99,12 @@ export default function HomePage() {
 
         <section className="border border-[rgba(0,255,65,0.12)] bg-black/35 p-5">
           <p className="font-['Share_Tech_Mono'] text-xs uppercase tracking-[0.25em] text-[rgba(200,255,208,0.45)]">
-            System Notes
+            System Info
           </p>
           <div className="mt-4 space-y-3 text-xs leading-6 text-[rgba(200,255,208,0.58)]">
-            <p>[01] Full-height shell ready for routing and modular expansion.</p>
-            <p>[02] Visual language optimized for SOC, red team, and terminal-inspired tooling.</p>
-            <p>[03] Layout split between navigation, operations, and future widgets.</p>
-            <p>[04] Only one main component: Homepage.</p>
+            <p className="font-['Share_Tech_Mono']">Developed by RykerWilder</p>
+            <p className="font-['Share_Tech_Mono']">&copy; {new Date().getFullYear()}</p>
+            <p className="font-['Share_Tech_Mono']">All rights reserved</p>
           </div>
         </section>
 
