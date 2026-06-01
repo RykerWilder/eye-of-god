@@ -18,7 +18,7 @@ createRoot(document.getElementById('root')).render(
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/recon" element={<Recon />} />
-          <Route path="utility-links" element={<UtilityLinks />} /> 
+          <Route path="/utility-links" element={<UtilityLinks />} /> 
           <Route path="/threat-intel" element={<ThreatIntel />} />
         </Route>
       </Routes>
