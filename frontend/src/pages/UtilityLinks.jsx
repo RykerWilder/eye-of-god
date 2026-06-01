@@ -5,9 +5,8 @@ const linkGroups = [
     category: 'OSINT & Recon',
     links: [
       { name: 'Shodan',          url: 'https://shodan.io',             desc: 'Internet-wide device & service scanner.' },
-      { name: 'Censys',          url: 'https://search.censys.io',      desc: 'Attack surface & exposure monitoring.' },
-      { name: 'Hunter.io',       url: 'https://hunter.io',             desc: 'Email finder and domain lookup.' },
-      { name: 'BuiltWith',       url: 'https://builtwith.com',         desc: 'Technology profiler for web targets.' },
+      { name: 'Maltego',         url: 'https://maltego.com',           desc: 'Visual link analysis and OSINT graph mapping.' },
+      { name: 'Wayback Machine', url: 'https://web.archive.org',       desc: 'Historical snapshots of web pages and domains.' },
       { name: 'DNSDumpster',     url: 'https://dnsdumpster.com',       desc: 'DNS recon & domain mapping.' },
     ],
   },
@@ -34,10 +33,10 @@ const linkGroups = [
     category: 'Utilities & Tools',
     links: [
       { name: 'CyberChef',       url: 'https://gchq.github.io/CyberChef', desc: 'Encode, decode, transform data.' },
-      { name: 'JWT.io',          url: 'https://jwt.io',                desc: 'JWT token inspector and debugger.' },
-      { name: 'SSL Labs',        url: 'https://ssllabs.com/ssltest',   desc: 'SSL/TLS certificate grader.' },
-      { name: 'Regex101',        url: 'https://regex101.com',          desc: 'Regex builder and tester.' },
-      { name: 'RequestBin',      url: 'https://requestbin.com',        desc: 'HTTP request inspector & bin.' },
+      { name: 'JWT.io',          url: 'https://jwt.io',                   desc: 'JWT token inspector and debugger.' },
+      { name: 'SSL Labs',        url: 'https://ssllabs.com/ssltest',      desc: 'SSL/TLS certificate grader.' },
+      { name: 'Regex101',        url: 'https://regex101.com',             desc: 'Regex builder and tester.' },
+      { name: 'ExifTool',        url: 'https://exiftool.org',             desc: 'Read and strip metadata from files and images.' },
     ],
   },
 ]
