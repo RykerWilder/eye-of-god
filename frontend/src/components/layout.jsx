@@ -1,6 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { Activity, Globe, ChevronRight, Search } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Logo from "../../public/logo.svg";
 
 const tools = [
@@ -8,7 +8,6 @@ const tools = [
   { name: "Sherlock", path: "/recon/", section: "Recon" },
   { name: "Holehe", path: "/recon/", section: "Recon" },
   { name: "AbuseIPDB", path: "/threat-intel", section: "Threat Intel" },
-
   {
     name: "VirusTotal",
     path: "/threat-intel/virustotal",
@@ -30,6 +29,7 @@ export default function Layout() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
 
   const filteredTools = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -43,15 +43,65 @@ export default function Layout() {
     );
   }, [search]);
 
+  useEffect(() => {
+    if (!search.trim()) {
+      setHighlightedIndex(-1);
+      return;
+    }
+
+    setHighlightedIndex(filteredTools.length > 0 ? 0 : -1);
+  }, [search, filteredTools.length]);
+
   const handleToolClick = (path) => {
     setSearch("");
     setIsOpen(false);
+    setHighlightedIndex(-1);
     navigate(path);
+  };
+
+  const handleKeyDown = (e) => {
+    if (!isOpen && (e.key === "ArrowDown" || e.key === "ArrowUp")) {
+      setIsOpen(true);
+    }
+
+    if (!filteredTools.length) return;
+
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        setIsOpen(true);
+        setHighlightedIndex((prev) =>
+          prev < filteredTools.length - 1 ? prev + 1 : 0,
+        );
+        break;
+
+      case "ArrowUp":
+        e.preventDefault();
+        setIsOpen(true);
+        setHighlightedIndex((prev) =>
+          prev > 0 ? prev - 1 : filteredTools.length - 1,
+        );
+        break;
+
+      case "Enter":
+        if (isOpen && highlightedIndex >= 0) {
+          e.preventDefault();
+          handleToolClick(filteredTools[highlightedIndex].path);
+        }
+        break;
+
+      case "Escape":
+        setIsOpen(false);
+        setHighlightedIndex(-1);
+        break;
+
+      default:
+        break;
+    }
   };
 
   return (
     <main className="relative h-screen w-full overflow-hidden bg-[#080808] text-[#c8ffd0]">
-      {/* Background effects */}
       <div className="absolute inset-0 opacity-40">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,255,65,0.12),transparent_40%)]" />
         <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,65,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,65,0.05)_1px,transparent_1px)] bg-[size:38px_38px]" />
@@ -59,7 +109,6 @@ export default function Layout() {
       </div>
 
       <div className="relative grid h-full grid-cols-1 lg:grid-cols-[280px_1fr]">
-        {/* ── SIDEBAR ── */}
         <aside className="border-b border-[rgba(0,255,65,0.12)] bg-[#0b0b0b]/90 backdrop-blur-md lg:border-b-0 lg:border-r">
           <div className="flex h-full flex-col p-4 sm:p-5">
             <div
@@ -99,10 +148,8 @@ export default function Layout() {
           </div>
         </aside>
 
-        {/* ── MAIN AREA ── */}
         <section className="min-h-0 overflow-auto flex flex-col">
           <div className="flex flex-1 flex-col p-4 sm:p-6 lg:p-8">
-            {/* HEADER */}
             <header className="glow-border shrink-0 flex flex-col gap-4 border border-[rgba(0,255,65,0.15)] bg-[linear-gradient(180deg,rgba(0,255,65,0.06),rgba(0,0,0,0.35))] p-5 sm:p-6 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-3xl">
                 <p className="font-['Share_Tech_Mono'] text-xs uppercase tracking-[0.35em] text-[rgba(0,255,65,0.7)]">
@@ -121,6 +168,7 @@ export default function Layout() {
                     setSearch(e.target.value);
                     setIsOpen(true);
                   }}
+                  onKeyDown={handleKeyDown}
                   onFocus={() => setIsOpen(true)}
                   onBlur={() => {
                     setTimeout(() => setIsOpen(false), 150);
@@ -132,12 +180,17 @@ export default function Layout() {
                 {isOpen && search.trim() !== "" && (
                   <div className="absolute right-0 top-full z-20 mt-2 max-h-72 w-full overflow-y-auto border border-[rgba(0,255,65,0.15)] bg-[#0b0b0b]/95 shadow-[0_0_25px_rgba(0,255,65,0.08)] backdrop-blur-md">
                     {filteredTools.length > 0 ? (
-                      filteredTools.map((tool) => (
+                      filteredTools.map((tool, index) => (
                         <button
                           key={`${tool.name}-${tool.path}`}
                           type="button"
+                          onMouseDown={(e) => e.preventDefault()}
                           onClick={() => handleToolClick(tool.path)}
-                          className="group flex w-full items-center justify-between border-b border-[rgba(0,255,65,0.08)] px-4 py-3 text-left transition last:border-b-0 hover:bg-[rgba(0,255,65,0.06)]"
+                          className={`group flex w-full items-center justify-between border-b border-[rgba(0,255,65,0.08)] px-4 py-3 text-left transition last:border-b-0 ${
+                            highlightedIndex === index
+                              ? "bg-[rgba(0,255,65,0.10)]"
+                              : "hover:bg-[rgba(0,255,65,0.06)]"
+                          }`}
                         >
                           <div>
                             <p className="font-['Share_Tech_Mono'] text-sm text-[#d8ffe0] group-hover:text-[#ffffff]">
@@ -150,7 +203,11 @@ export default function Layout() {
 
                           <ChevronRight
                             size={14}
-                            className="text-[rgba(200,255,208,0.35)] transition-all group-hover:translate-x-0.5 group-hover:text-[#00ff41]"
+                            className={`transition-all ${
+                              highlightedIndex === index
+                                ? "translate-x-0.5 text-[#00ff41]"
+                                : "text-[rgba(200,255,208,0.35)] group-hover:translate-x-0.5 group-hover:text-[#00ff41]"
+                            }`}
                           />
                         </button>
                       ))
@@ -164,7 +221,6 @@ export default function Layout() {
               </div>
             </header>
 
-            {/* ── OUTLET ── */}
             <div className="mt-5 min-h-0 flex-1">
               <Outlet />
             </div>
