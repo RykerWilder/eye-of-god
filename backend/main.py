@@ -1,9 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import holehe, sherlock, abuseipdb, whois, dorks
-from dotenv import load_dotenv
-
-load_dotenv()
 
 app = FastAPI(title="CyberSec Dashboard API", version="1.0.0")
 
