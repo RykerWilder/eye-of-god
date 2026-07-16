@@ -2,6 +2,7 @@ import os
 import httpx
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
+from dotenv import load_dotenv
 
 router = APIRouter()
 
