@@ -5,12 +5,14 @@ import OutputTerminal from "../../components/OutputTerminal";
 import Holehe, { getHoleheLines, holeheLoadingLines } from "./tools/Holehe";
 import Sherlock, { getSherlockLines, sherlockLoadingLines } from "./tools/Sherlock";
 import Whois, { getWhoisLines, whoisLoadingLines } from "./tools/Whois";
+import TheHarvester, { getTheHarvesterLines, theHarvesterLoadingLines } from "./tools/TheHarvester";
 
 
 const TOOL_REGISTRY = [
   { getLines: getHoleheLines, loadingLines: holeheLoadingLines },
   { getLines: getSherlockLines, loadingLines: sherlockLoadingLines },
   { getLines: getWhoisLines, loadingLines: whoisLoadingLines },
+  { getLines: getTheHarvesterLines, loadingLines: theHarvesterLoadingLines },
 ];
 
 
@@ -80,7 +82,7 @@ export default function ReconPage() {
         <Holehe onResult={setResult} onError={setError} onLoading={setLoading} />
         <Sherlock onResult={setResult} onError={setError} onLoading={setLoading} />
         <Whois onResult={setResult} onError={setError} onLoading={setLoading} />
-        {/* <SpiderFoot onResult={setResult} onError={setError} onLoading={setLoading} /> */}
+        <TheHarvester onResult={setResult} onError={setError} onLoading={setLoading} />
       </div>
 
       <OutputTerminal lines={terminalLines} />

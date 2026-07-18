@@ -7,6 +7,7 @@ const tools = [
   { name: "WHOIS", path: "/recon/", section: "Recon" },
   { name: "Sherlock", path: "/recon/", section: "Recon" },
   { name: "Holehe", path: "/recon/", section: "Recon" },
+  { name: "theHarvester", path: "/recon/", section: "Recon" },
   { name: "AbuseIPDB", path: "/threat-intel", section: "Threat Intel" },
   {
     name: "VirusTotal",

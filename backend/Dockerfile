@@ -1,10 +1,10 @@
 FROM python:3.13-slim
 
-# whois CLI, build tools per compilare eventuali dipendenze native, curl per healthcheck
 RUN apt-get update && apt-get install -y --no-install-recommends \
     whois \
     build-essential \
     curl \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -12,9 +12,15 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN python -m venv /opt/theharvester-venv && \
+    /opt/theharvester-venv/bin/pip install --no-cache-dir \
+        "theHarvester @ git+https://github.com/laramies/theHarvester.git@master" && \
+    chmod -R a+rX /opt/theharvester-venv
+ENV THEHARVESTER_BIN="/opt/theharvester-venv/bin/theHarvester"
+
 COPY . .
 
-# Utente non privilegiato
+
 RUN useradd --create-home --shell /bin/bash appuser && chown -R appuser:appuser /app
 USER appuser
 
