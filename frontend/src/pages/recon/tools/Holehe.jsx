@@ -51,6 +51,7 @@ export default function Holehe({ onResult, onError, onLoading }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "API Error");
       onResult({ type: "holehe", email, data });
+      setEmail("");
     } catch (err) {
       onError(err.message);
     } finally {

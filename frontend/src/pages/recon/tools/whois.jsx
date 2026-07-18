@@ -89,6 +89,7 @@ export default function Whois({ onResult, onError, onLoading }) {
         domain,
         data,
       });
+      setDomain("");
     } catch (err) {
       onError(err.message);
     } finally {

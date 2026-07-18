@@ -82,6 +82,7 @@ export default function AbuseIPDB({ onResult, onError, onLoading }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "API Error");
       onResult({ type: "abuseipdb", ip, data });
+      setIp("");
     } catch (err) {
       onError(err.message);
     } finally {

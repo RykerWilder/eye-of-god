@@ -51,6 +51,7 @@ export default function Sherlock({ onResult, onError, onLoading }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "API Error");
       onResult({ type: "sherlock", username, data });
+      setUsername("");
     } catch (err) {
       onError(err.message);
     } finally {

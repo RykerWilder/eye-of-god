@@ -138,6 +138,21 @@ export default function Dorks({ onResult, onError, onLoading }) {
       if (!res.ok) throw new Error(data.detail || "API Error");
 
       onResult({ type: "dorks", data });
+
+      setTerms("");
+      setExactPhrases("");
+      setExcludeTerms("");
+      setSite("");
+      setFiletype("");
+      setExt("");
+      setInurl("");
+      setIntitle("");
+      setIntext("");
+      setAllinurl("");
+      setAllintitle("");
+      setAllintext("");
+      setAfter("");
+      setBefore("");
     } catch (err) {
       onError(err.message);
     } finally {
