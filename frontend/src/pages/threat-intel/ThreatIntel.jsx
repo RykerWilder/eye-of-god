@@ -99,7 +99,7 @@ export default function ThreatIntelPage() {
       </div>
 
       {/* Right column */}
-      <OutputTerminal lines={terminalLines} />
+      <OutputTerminal lines={terminalLines} fileName="threat-intel" />
     </div>
   );
 }

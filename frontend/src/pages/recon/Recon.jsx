@@ -85,7 +85,7 @@ export default function ReconPage() {
         <TheHarvester onResult={setResult} onError={setError} onLoading={setLoading} />
       </div>
 
-      <OutputTerminal lines={terminalLines} />
+      <OutputTerminal lines={terminalLines} fileName="recon" />
     </div>
   );
 }

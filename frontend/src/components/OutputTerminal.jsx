@@ -1,15 +1,32 @@
 import { useState } from 'react'
-import { Terminal, Copy, Check } from 'lucide-react'
+import { Terminal, Copy, Check, Download } from 'lucide-react'
 
-export default function OsintTerminal({ lines = [] }) {
+export default function OsintTerminal({ lines = [], fileName = 'output' }) {
   const [copied, setCopied] = useState(false)
+  const [downloaded, setDownloaded] = useState(false)
+
+  const getText = () => lines.map((l) => l.text).join('\n')
 
   const handleCopy = () => {
-    const text = lines.map((l) => l.text).join('\n')
-    navigator.clipboard.writeText(text).then(() => {
+    navigator.clipboard.writeText(getText()).then(() => {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     })
+  }
+
+  const handleDownload = () => {
+    const blob = new Blob([getText()], { type: 'text/plain;charset=utf-8' })
+    const url = URL.createObjectURL(blob)
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-')
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${fileName}_${timestamp}.txt`
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+    URL.revokeObjectURL(url)
+    setDownloaded(true)
+    setTimeout(() => setDownloaded(false), 2000)
   }
 
   return (
@@ -23,15 +40,27 @@ export default function OsintTerminal({ lines = [] }) {
             Output
           </span>
         </div>
-        <button
-          onClick={handleCopy}
-          className="flex items-center gap-1.5 border border-[rgba(0,255,65,0.15)] px-2.5 py-1 font-['Share_Tech_Mono'] text-[10px] uppercase tracking-[0.18em] text-[rgba(200,255,208,0.5)] transition hover:border-[rgba(0,255,65,0.4)] hover:text-[#00ff41]"
-        >
-          {copied
-            ? <><Check size={11} /> Copied</>
-            : <><Copy size={11} /> Copy</>
-          }
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleCopy}
+            className="flex items-center gap-1.5 border border-[rgba(0,255,65,0.15)] px-2.5 py-1.5 font-['Share_Tech_Mono'] text-[10px] uppercase tracking-[0.18em] text-[rgba(200,255,208,0.5)] transition hover:border-[rgba(0,255,65,0.4)] hover:text-[#00ff41]"
+          >
+            {copied
+              ? <><Check size={16} /> Copied</>
+              : <><Copy size={16} /> Copy</>
+            }
+          </button>
+          <button
+            onClick={handleDownload}
+            disabled={lines.length === 0}
+            className="flex items-center gap-1.5 border border-[rgba(0,255,65,0.15)] px-2.5 py-1.5 font-['Share_Tech_Mono'] text-[10px] uppercase tracking-[0.18em] text-[rgba(200,255,208,0.5)] transition hover:border-[rgba(0,255,65,0.4)] hover:text-[#00ff41] disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-[rgba(0,255,65,0.15)] disabled:hover:text-[rgba(200,255,208,0.5)]"
+          >
+            {downloaded
+              ? <><Check size={16} /> Saved</>
+              : <><Download size={16} /> .txt</>
+            }
+          </button>
+        </div>
       </div>
 
       {/* Body */}
