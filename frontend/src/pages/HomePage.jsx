@@ -1,5 +1,6 @@
 import { Radar, ScanSearch, Bug, Globe, Lock, TerminalSquare, ChevronRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import CVEFeed from '../components/CVEFeed'
 
 const toolCategories = [
   { name: 'Recon',        icon: Radar,          desc: 'Subdomain discovery, OSINT, Olehe, WHOIS.' },
@@ -96,6 +97,7 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+        <CVEFeed />
 
         <section className="border border-[rgba(0,255,65,0.12)] bg-black/35 p-5">
           <p className="font-['Share_Tech_Mono'] text-xs uppercase tracking-[0.25em] text-[rgba(200,255,208,0.45)]">
