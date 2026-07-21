@@ -157,11 +157,11 @@ async def get_nvd_severity() -> List[Dict[str, Any]]:
     """
     end_date = datetime.utcnow()
     start_date = end_date - timedelta(days=7)
-    
+
     params = {
         "resultsPerPage": 10,
-        "pubStartDate": start_date.isoformat() + "Z",
-        "pubEndDate": end_date.isoformat() + "Z",
+        "pubStartDate": start_date.strftime("%Y-%m-%dT%H:%M:%S.000"),
+        "pubEndDate": end_date.strftime("%Y-%m-%dT%H:%M:%S.000"),
     }
 
     try:

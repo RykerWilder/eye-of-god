@@ -18,9 +18,12 @@ const CVEFeed = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [refreshing, setRefreshing] = useState(false);
+
   const load = () => {
-    if (loading) return;
-    
+    if (refreshing) return;
+
+    setRefreshing(true);
     setLoading(true);
     setError(null);
 
@@ -37,7 +40,10 @@ const CVEFeed = () => {
         console.error("Data fetch error:", err);
         setError(err.message || "Error downloading data");
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setRefreshing(false);
+      });
   };
 
   useEffect(() => {
@@ -88,11 +94,11 @@ const CVEFeed = () => {
         </p>
         <button
           onClick={load}
-          disabled={loading}
+          disabled={refreshing}
           aria-label="Refresh CVE feed"
           className="text-[rgba(200,255,208,0.45)] hover:text-[#00ff41] transition disabled:opacity-40"
         >
-          <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
+          <RefreshCw size={14} className={refreshing ? "animate-spin" : ""} />
         </button>
       </div>
 
