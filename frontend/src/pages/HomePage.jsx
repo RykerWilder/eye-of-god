@@ -79,24 +79,6 @@ export default function HomePage() {
 
       {/* Right sidebar */}
       <aside className="grid gap-5 content-start">
-
-        <section className="border border-[rgba(0,255,65,0.12)] bg-[#0d0d0d] p-5">
-          <p className="font-['Share_Tech_Mono'] text-xs uppercase tracking-[0.25em] text-[rgba(200,255,208,0.45)]">
-            Mission Feed
-          </p>
-          <div className="mt-4 space-y-4 text-sm">
-            {[
-              ['CVE watcher ready',     'Critical feeds linked to future dashboard widgets.'],
-              ['OSINT hub prepared',    'Space reserved for external APIs and data ingestion.'],
-              ['Utilities layer online','JWT parser, hash tools, cert decode, base64 tools.'],
-            ].map(([title, copy]) => (
-              <div key={title} className="border-l border-[rgba(0,255,65,0.25)] pl-4">
-                <h3 className="font-['Share_Tech_Mono'] text-[#d8ffe0]">{title}</h3>
-                <p className="mt-2 text-[rgba(200,255,208,0.56)]">{copy}</p>
-              </div>
-            ))}
-          </div>
-        </section>
         <CVEFeed />
 
         <section className="border border-[rgba(0,255,65,0.12)] bg-black/35 p-5">
