@@ -10,9 +10,14 @@ import Dorks, {
   getDorksLines,
   dorksLoadingLines,
 } from "./tools/Dorks";
+import IPTracker, {
+  getIPTrackerLines,
+  ipTrackerLoadingLines,
+} from "./tools/IPTracker";
 
 const TOOL_REGISTRY = [
   { getLines: getAbuseIPDBLines, loadingLines: abuseIPDBLoadingLines },
+  { getLines: getIPTrackerLines, loadingLines: ipTrackerLoadingLines },
   { getLines: getDorksLines, loadingLines: dorksLoadingLines },
 ];
 
@@ -86,6 +91,12 @@ export default function ThreatIntelPage() {
         )}
 
         <AbuseIPDB
+          onResult={setResult}
+          onError={setError}
+          onLoading={setLoading}
+        />
+
+        <IPTracker
           onResult={setResult}
           onError={setError}
           onLoading={setLoading}
