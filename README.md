@@ -6,6 +6,7 @@
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 ![OSINT](https://img.shields.io/badge/OSINT-00FF41?logo=shieldsdotio&logoColor=black&labelColor=00FF41&color=00FF41)
 
+<img src="https://github.com/RykerWilder/static_files/blob/main/eye-of-god.webp" alt="Eye-Of-God">
 
 **Eye of God** is a self-hosted **OSINT / cybersecurity dashboard**. It's a web application for running several well-known open-source reconnaissance and threat-intelligence tools, instead of using each one separately from the command line.
 
@@ -40,8 +41,6 @@ The homepage also lists placeholder categories (Scanner, Malware, Crypto, Termin
 - An **AbuseIPDB API key** (free tier available at https://www.abuseipdb.com/) if you want to use the AbuseIPDB tool. Some other advanced theHarvester sources also need their own API keys, but the tool works out of the box with the free sources.
 
 ## Installation & Setup
-
-### Option A — Run with Docker (recommended)
 
 1. Unzip/clone the project and move into its folder:
    ```bash
