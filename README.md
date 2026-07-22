@@ -29,6 +29,7 @@ The dashboard is organized into tool categories, with the following currently im
 
 ### Threat Intel
 - **AbuseIPDB lookup** — checks an IP address's abuse reports and confidence score via the AbuseIPDB API.
+- **IP Tracker** — looks up an IP address (v4/v6) and returns geolocation (country, region, city, coordinates, timezone), network provider details (ISP, organization, ASN, proxy/hosting/mobile flags) via ip-api.com, and network allocation data (CIDR block, address range, network name/type, parent handle, RIR registry, abuse contact emails) via RDAP/ipwhois. No API key required.
 - **Google Dorks builder** — a form that helps you build advanced Google search queries (site:, filetype:, intitle:, exact phrases, date ranges, etc.) for OSINT research.
 - **CVE feed** — pulls the latest published CVEs (with CVSS score/severity) from the NVD (National Vulnerability Database) API and shows them on the dashboard.
 
