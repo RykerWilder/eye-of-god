@@ -5,3 +5,71 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 ![OSINT](https://img.shields.io/badge/OSINT-00FF41?logo=shieldsdotio&logoColor=black&labelColor=00FF41&color=00FF41)
+
+
+**Eye of God** is a self-hosted **OSINT / cybersecurity dashboard**. It's a web application for running several well-known open-source reconnaissance and threat-intelligence tools, instead of using each one separately from the command line.
+
+It's built as two separate services that talk to each other:
+
+- **Frontend** — a React (Vite + Tailwind) single-page app. This is the dashboard you see and click around in.
+- **Backend** — a Python FastAPI server that actually executes the security tools and calls external APIs, then returns clean JSON results to the frontend.
+
+Both pieces are containerized with Docker and wired together with `docker-compose`.
+
+## What can you do with it?
+
+The dashboard is organized into tool categories, with the following currently implemented:
+
+### Recon
+- **Sherlock** — searches for a given username across many social networks/websites and reports where an account exists.
+- **Holehe** — checks whether an email address is registered on numerous online services.
+- **WHOIS** — looks up domain registration details (registrar, creation/expiry dates, name servers, registrant info, etc.).
+- **theHarvester** — passive OSINT gathering for a domain: subdomains, hosts, emails, IPs, ASNs, and URLs, pulled from many free public sources (crt.sh, DNSDumpster, HackerTarget, OTX, urlscan, and more).
+
+### Threat Intel
+- **AbuseIPDB lookup** — checks an IP address's abuse reports and confidence score via the AbuseIPDB API.
+- **Google Dorks builder** — a form that helps you build advanced Google search queries (site:, filetype:, intitle:, exact phrases, date ranges, etc.) for OSINT research.
+- **CVE feed** — pulls the latest published CVEs (with CVSS score/severity) from the NVD (National Vulnerability Database) API and shows them on the dashboard.
+
+The homepage also lists placeholder categories (Scanner, Malware, Crypto, Terminal) that are shown in the UI but not yet implemented in the backend.
+
+## Requirements
+
+- **Docker** and **Docker Compose** (recommended — simplest way to run everything), **or**
+- **Python 3.13** and **Node.js 20** if you want to run backend and frontend manually without Docker.
+- An **AbuseIPDB API key** (free tier available at https://www.abuseipdb.com/) if you want to use the AbuseIPDB tool. Some other advanced theHarvester sources also need their own API keys, but the tool works out of the box with the free sources.
+
+## Installation & Setup
+
+### Option A — Run with Docker (recommended)
+
+1. Unzip/clone the project and move into its folder:
+   ```bash
+   cd eye-of-god
+   ```
+
+2. Create your environment file from the example:
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Open `.env` and add your AbuseIPDB API key (and optionally an NVD API key for higher CVE-feed rate limits):
+   ```
+   ABUSEIPDB_API_KEY=your_key_here
+   ```
+
+4. Build and start both services:
+   ```bash
+   docker compose up -d --build
+   ```
+
+5. Once the containers are up:
+   - **Frontend (dashboard):** http://localhost:5173
+   - **Backend (API):** http://localhost:8000
+   - You can check the backend is alive at http://localhost:8000/health
+
+## Notes & Considerations
+
+- This is an **OSINT/security research tool**. Only use it against domains, emails, usernames, and IPs you're authorized to investigate.
+- Sherlock and theHarvester are run as external command-line tools by the backend, so the Docker image installs them (and their dependencies, like `whois` and `git`) automatically. If running manually, make sure these binaries are installed and discoverable in your `PATH` or virtual environment.
+- Some theHarvester sources and some planned dashboard categories (Scanner, Malware, Crypto) require additional API keys or are not yet implemented — check the source code in `backend/routers/` for the current list of supported data sources.
