@@ -31,6 +31,8 @@ export default function Layout() {
   const [search, setSearch] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
+  const [ipInfo, setIpInfo] = useState(null);
+  const [ipError, setIpError] = useState(false);
 
   const filteredTools = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -52,6 +54,39 @@ export default function Layout() {
 
     setHighlightedIndex(filteredTools.length > 0 ? 0 : -1);
   }, [search, filteredTools.length]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    // api.ipify.org espone solo endpoint IPv4, quindi l'IP restituito
+    // è garantito essere un indirizzo IPv4.
+    fetch("https://api.ipify.org?format=json")
+      .then((res) => {
+        if (!res.ok) throw new Error("IPv4 lookup failed");
+        return res.json();
+      })
+      .then((ipData) =>
+        fetch(`https://ipapi.co/${ipData.ip}/json/`)
+          .then((res) => {
+            if (!res.ok) throw new Error("Geo lookup failed");
+            return res.json();
+          })
+          .then((geoData) => {
+            if (!isMounted) return;
+            setIpInfo({
+              ip: ipData.ip,
+              country: geoData.country_name,
+            });
+          }),
+      )
+      .catch(() => {
+        if (isMounted) setIpError(true);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleToolClick = (path) => {
     setSearch("");
@@ -152,13 +187,25 @@ export default function Layout() {
         <section className="min-h-0 overflow-auto flex flex-col">
           <div className="flex flex-1 flex-col p-4 sm:p-6 lg:p-8">
             <header className="glow-border shrink-0 flex flex-col gap-4 border border-[rgba(0,255,65,0.15)] bg-[linear-gradient(180deg,rgba(0,255,65,0.06),rgba(0,0,0,0.35))] p-5 sm:p-6 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-3xl">
+              <div className="max-w-3xl w-full flex-1">
                 <p className="font-['Share_Tech_Mono'] text-xs uppercase tracking-[0.35em] text-[rgba(0,255,65,0.7)]">
                   Cybersecurity Control Surface
                 </p>
-                <h1 className="glow-text mt-3 font-['Share_Tech_Mono'] text-3xl uppercase tracking-[0.08em] text-[#d8ffe0] sm:text-4xl">
-                  Eye of God
-                </h1>
+                <div className="mt-3 flex w-full flex-wrap items-baseline justify-between gap-3">
+                  <h1 className="glow-text font-['Share_Tech_Mono'] text-3xl uppercase tracking-[0.08em] text-[#d8ffe0] sm:text-4xl">
+                    Eye of God
+                  </h1>
+                  {ipInfo && (
+                    <p className="font-['Share_Tech_Mono'] text-xs uppercase tracking-[0.15em] text-[rgba(0,255,65,0.65)]">
+                      {ipInfo.ip} · {ipInfo.country}
+                    </p>
+                  )}
+                  {!ipInfo && ipError && (
+                    <p className="font-['Share_Tech_Mono'] text-xs uppercase tracking-[0.15em] text-[rgba(200,255,208,0.35)]">
+                      IP lookup unavailable
+                    </p>
+                  )}
+                </div>
               </div>
 
               <div className="relative w-full lg:w-[360px]">
