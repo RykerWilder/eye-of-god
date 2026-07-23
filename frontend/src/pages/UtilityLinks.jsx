@@ -9,6 +9,7 @@ const linkGroups = [
       { name: 'Osiris',          url: 'https://osirisai.live',         desc: 'Global Intelligence Platform'},
       { name: 'Yandex',          url: 'https://yandex.com',            desc: 'Search engine' },
       { name: 'DNSDumpster',     url: 'https://dnsdumpster.com',       desc: 'DNS recon & domain mapping.' },
+      { name: 'Grabify',         url: 'https://grabify.link',          desc: 'IP & link tracking logger.' },
     ],
   },
   {
@@ -38,6 +39,13 @@ const linkGroups = [
       { name: 'SSL Labs',        url: 'https://ssllabs.com/ssltest',      desc: 'SSL/TLS certificate grader.' },
       { name: 'Regex101',        url: 'https://regex101.com',             desc: 'Regex builder and tester.' },
       { name: 'ExifTool',        url: 'https://exiftool.org',             desc: 'Read and strip metadata from files and images.' },
+    ],
+  },
+  {
+    category: 'Anonymity & Temp Comms',
+    links: [
+      { name: 'SMS24',           url: 'https://sms24.me',              desc: 'Numeri temporanei per ricevere SMS.' },
+      { name: 'Yopmail',         url: 'https://yopmail.com',           desc: 'Email temporanee usa e getta.' },
     ],
   },
 ]
