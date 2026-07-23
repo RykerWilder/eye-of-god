@@ -6,6 +6,7 @@ import Holehe, { getHoleheLines, holeheLoadingLines } from "./tools/Holehe";
 import Sherlock, { getSherlockLines, sherlockLoadingLines } from "./tools/Sherlock";
 import Whois, { getWhoisLines, whoisLoadingLines } from "./tools/Whois";
 import TheHarvester, { getTheHarvesterLines, theHarvesterLoadingLines } from "./tools/TheHarvester";
+import MetadataExtractor, { getMetadataLines, metadataLoadingLines } from "./tools/MetadataExtractor";
 
 
 const TOOL_REGISTRY = [
@@ -13,6 +14,7 @@ const TOOL_REGISTRY = [
   { getLines: getSherlockLines, loadingLines: sherlockLoadingLines },
   { getLines: getWhoisLines, loadingLines: whoisLoadingLines },
   { getLines: getTheHarvesterLines, loadingLines: theHarvesterLoadingLines },
+  { getLines: getMetadataLines, loadingLines: metadataLoadingLines },
 ];
 
 
@@ -83,6 +85,7 @@ export default function ReconPage() {
         <Sherlock onResult={setResult} onError={setError} onLoading={setLoading} />
         <Whois onResult={setResult} onError={setError} onLoading={setLoading} />
         <TheHarvester onResult={setResult} onError={setError} onLoading={setLoading} />
+        <MetadataExtractor onResult={setResult} onError={setError} onLoading={setLoading} />
       </div>
 
       <OutputTerminal lines={terminalLines} fileName="recon" />

@@ -1,11 +1,19 @@
 FROM python:3.13-slim
 
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=Etc/UTC
+
 RUN apt-get update && apt-get install -y --no-install-recommends \
     whois \
     build-essential \
     curl \
     git \
+    default-jdk-headless \
     && rm -rf /var/lib/apt/lists/*
+
+# tikara (Tika wrapper) talks to a JVM via JPype/JNI and needs JAVA_HOME set.
+ENV JAVA_HOME=/usr/lib/jvm/default-java
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 WORKDIR /app
 

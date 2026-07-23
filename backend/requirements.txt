@@ -6,6 +6,8 @@ ipwhois==1.3.0
 pip-chill==1.0.5
 pydantic_core==2.46.4
 python-dotenv==1.1.0
+python-multipart==0.0.20
 python-whois==0.9.6
 sherlock-project==0.16.0
+tikara==0.1.7
 uvicorn==0.48.0
