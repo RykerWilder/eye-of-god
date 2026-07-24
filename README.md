@@ -26,6 +26,7 @@ The dashboard is organized into tool categories, with the following currently im
 - **Holehe** — checks whether an email address is registered on numerous online services.
 - **WHOIS** — looks up domain registration details (registrar, creation/expiry dates, name servers, registrant info, etc.).
 - **theHarvester** — passive OSINT gathering for a domain: subdomains, hosts, emails, IPs, ASNs, and URLs, pulled from many free public sources (crt.sh, DNSDumpster, HackerTarget, OTX, urlscan, and more).
+- **Metadata Extractor** — upload any file (document, image, PDF, etc.) and extract its embedded metadata (author, software used, timestamps, GPS/EXIF data, and more) plus a short text content preview, powered by Apache Tika. Files up to 50MB are supported.
 
 ### Threat Intel
 - **AbuseIPDB lookup** — checks an IP address's abuse reports and confidence score via the AbuseIPDB API.
@@ -72,4 +73,5 @@ The homepage also lists placeholder categories (Scanner, Malware, Crypto, Termin
 
 - This is an **OSINT/security research tool**. Only use it against domains, emails, usernames, and IPs you're authorized to investigate.
 - Sherlock and theHarvester are run as external command-line tools by the backend, so the Docker image installs them (and their dependencies, like `whois` and `git`) automatically. If running manually, make sure these binaries are installed and discoverable in your `PATH` or virtual environment.
+- The Metadata Extractor relies on `tikara` (a Tika wrapper), which needs a JVM under the hood. The Docker image installs a headless JDK automatically; if running manually, make sure a JDK is installed and `JAVA_HOME` is set.
 - Some theHarvester sources and some planned dashboard categories (Scanner, Malware, Crypto) require additional API keys or are not yet implemented — check the source code in `backend/routers/` for the current list of supported data sources.
