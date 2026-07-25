@@ -7,6 +7,7 @@ import Sherlock, { getSherlockLines, sherlockLoadingLines } from "./tools/Sherlo
 import Whois, { getWhoisLines, whoisLoadingLines } from "./tools/Whois";
 import TheHarvester, { getTheHarvesterLines, theHarvesterLoadingLines } from "./tools/TheHarvester";
 import MetadataExtractor, { getMetadataLines, metadataLoadingLines } from "./tools/MetadataExtractor";
+import DnsInspector, { getDnsInspectorLines, dnsInspectorLoadingLines } from "./tools/DnsInspector";
 
 
 const TOOL_REGISTRY = [
@@ -15,6 +16,7 @@ const TOOL_REGISTRY = [
   { getLines: getWhoisLines, loadingLines: whoisLoadingLines },
   { getLines: getTheHarvesterLines, loadingLines: theHarvesterLoadingLines },
   { getLines: getMetadataLines, loadingLines: metadataLoadingLines },
+  { getLines: getDnsInspectorLines, loadingLines: dnsInspectorLoadingLines },
 ];
 
 
@@ -86,6 +88,7 @@ export default function ReconPage() {
         <Whois onResult={setResult} onError={setError} onLoading={setLoading} />
         <TheHarvester onResult={setResult} onError={setError} onLoading={setLoading} />
         <MetadataExtractor onResult={setResult} onError={setError} onLoading={setLoading} />
+        <DnsInspector onResult={setResult} onError={setError} onLoading={setLoading} />
       </div>
 
       <OutputTerminal lines={terminalLines} fileName="recon" />
