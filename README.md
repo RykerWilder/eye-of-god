@@ -27,6 +27,7 @@ The dashboard is organized into tool categories, with the following currently im
 - **WHOIS** — looks up domain registration details (registrar, creation/expiry dates, name servers, registrant info, etc.).
 - **theHarvester** — passive OSINT gathering for a domain: subdomains, hosts, emails, IPs, ASNs, and URLs, pulled from many free public sources (crt.sh, DNSDumpster, HackerTarget, OTX, urlscan, and more).
 - **Metadata Extractor** — upload any file (document, image, PDF, etc.) and extract its embedded metadata (author, software used, timestamps, GPS/EXIF data, and more) plus a short text content preview, powered by Apache Tika. Files up to 50MB are supported.
+- **DNS Inspector** — resolves A, AAAA, MX, NS, TXT, CNAME, SOA, and SRV records for a domain in parallel, powered by `dnspython`. Also supports reverse DNS (PTR) lookups when you enter an IP address instead of a domain, and lets you optionally target a custom DNS resolver.
 
 ### Threat Intel
 - **AbuseIPDB lookup** — checks an IP address's abuse reports and confidence score via the AbuseIPDB API.
