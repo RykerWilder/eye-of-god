@@ -8,6 +8,7 @@ import Whois, { getWhoisLines, whoisLoadingLines } from "./tools/Whois";
 import TheHarvester, { getTheHarvesterLines, theHarvesterLoadingLines } from "./tools/TheHarvester";
 import MetadataExtractor, { getMetadataLines, metadataLoadingLines } from "./tools/MetadataExtractor";
 import DnsInspector, { getDnsInspectorLines, dnsInspectorLoadingLines } from "./tools/DnsInspector";
+import Maigret, { getMaigretLines, maigretLoadingLines } from "./tools/Maigret";
 
 
 const TOOL_REGISTRY = [
@@ -17,6 +18,7 @@ const TOOL_REGISTRY = [
   { getLines: getTheHarvesterLines, loadingLines: theHarvesterLoadingLines },
   { getLines: getMetadataLines, loadingLines: metadataLoadingLines },
   { getLines: getDnsInspectorLines, loadingLines: dnsInspectorLoadingLines },
+  { getLines: getMaigretLines, loadingLines: maigretLoadingLines },
 ];
 
 
@@ -89,6 +91,7 @@ export default function ReconPage() {
         <TheHarvester onResult={setResult} onError={setError} onLoading={setLoading} />
         <MetadataExtractor onResult={setResult} onError={setError} onLoading={setLoading} />
         <DnsInspector onResult={setResult} onError={setError} onLoading={setLoading} />
+        <Maigret onResult={setResult} onError={setError} onLoading={setLoading} />
       </div>
 
       <OutputTerminal lines={terminalLines} fileName="recon" />
