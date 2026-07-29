@@ -23,6 +23,7 @@ The dashboard is organized into tool categories, with the following currently im
 
 ### Recon
 - **Sherlock** — searches for a given username across many social networks/websites and reports where an account exists.
+- **Maigret** — checks a given username across hundreds of sites (top 500 by default) and returns the matching profile URLs along with any site tags, powered by the Maigret OSINT tool.
 - **Holehe** — checks whether an email address is registered on numerous online services.
 - **WHOIS** — looks up domain registration details (registrar, creation/expiry dates, name servers, registrant info, etc.).
 - **theHarvester** — passive OSINT gathering for a domain: subdomains, hosts, emails, IPs, ASNs, and URLs, pulled from many free public sources (crt.sh, DNSDumpster, HackerTarget, OTX, urlscan, and more).
