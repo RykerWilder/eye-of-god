@@ -44,8 +44,17 @@ const linkGroups = [
   {
     category: 'Anonymity & Temp Comms',
     links: [
-      { name: 'SMS24',           url: 'https://sms24.me',              desc: 'Numeri temporanei per ricevere SMS.' },
-      { name: 'Yopmail',         url: 'https://yopmail.com',           desc: 'Email temporanee usa e getta.' },
+      { name: 'SMS24',           url: 'https://sms24.me',              desc: 'Temporary numbers for receiving SMS.' },
+      { name: 'Yopmail',         url: 'https://yopmail.com',           desc: 'Temporary disposable emails.' },
+    ],
+  },
+  {
+    category: 'Cyber Security News',
+    links: [
+      { name: 'HackerNews',           url: 'https://thehackernews.com',              desc: 'Daily news on breaches, malware and emerging CVEs.' },
+      { name: 'Bleeping Computer',    url: 'https://www.bleepingcomputer.com',       desc: 'News on ransomware, exploits and tech support guides.' },
+      { name: 'Krebs On Security',    url: 'https://krebsonsecurity.com',            desc: 'In-depth investigative reporting on cybercrime and fraud.' },
+      { name: 'SecurityWeek',         url: 'https://www.securityweek.com',           desc: 'News and analysis on vulnerabilities and threats.' },
     ],
   },
 ]
