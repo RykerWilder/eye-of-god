@@ -85,13 +85,15 @@ export default function ReconPage() {
           </div>
         )}
 
-        <Holehe onResult={setResult} onError={setError} onLoading={setLoading} />
-        <Sherlock onResult={setResult} onError={setError} onLoading={setLoading} />
-        <Whois onResult={setResult} onError={setError} onLoading={setLoading} />
-        <TheHarvester onResult={setResult} onError={setError} onLoading={setLoading} />
-        <MetadataExtractor onResult={setResult} onError={setError} onLoading={setLoading} />
-        <DnsInspector onResult={setResult} onError={setError} onLoading={setLoading} />
-        <Maigret onResult={setResult} onError={setError} onLoading={setLoading} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <Holehe onResult={setResult} onError={setError} onLoading={setLoading} />
+          <Sherlock onResult={setResult} onError={setError} onLoading={setLoading} />
+          <Whois onResult={setResult} onError={setError} onLoading={setLoading} />
+          <TheHarvester onResult={setResult} onError={setError} onLoading={setLoading} />
+          <MetadataExtractor onResult={setResult} onError={setError} onLoading={setLoading} />
+          <DnsInspector onResult={setResult} onError={setError} onLoading={setLoading} />
+          <Maigret onResult={setResult} onError={setError} onLoading={setLoading} />
+        </div>
       </div>
 
       <OutputTerminal lines={terminalLines} fileName="recon" />

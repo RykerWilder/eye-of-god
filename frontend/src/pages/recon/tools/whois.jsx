@@ -99,15 +99,19 @@ export default function Whois({ onResult, onError, onLoading }) {
 
 
   return (
-    <section className="border border-[rgba(0,255,65,0.12)] bg-[#0d0d0d] p-5 flex flex-col gap-4">
-      <div className="flex items-center gap-2">
-        <Globe size={20} className="text-[#00ff41]" />
-        <p className="font-['Share_Tech_Mono'] text-l uppercase tracking-[0.25em] text-[rgba(200,255,208,0.45)]">
-          Whois
-        </p>
-        <p className="font-['Share_Tech_Mono'] text-xs text-[rgba(200,255,208,0.3)] -mt-1">
-          - Domain Registration Lookup
-        </p>
+    <section className="group border border-[rgba(0,255,65,0.12)] bg-[linear-gradient(160deg,rgba(0,255,65,0.05),rgba(13,13,13,0.97)_65%)] p-4 flex flex-col gap-4 transition duration-200 hover:border-[rgba(0,255,65,0.32)]">
+      <div className="flex items-center gap-3">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-[rgba(0,255,65,0.25)] bg-[rgba(0,255,65,0.07)] transition duration-200 group-hover:border-[rgba(0,255,65,0.45)] group-hover:bg-[rgba(0,255,65,0.12)]">
+          <Globe size={18} className="text-[#00ff41]" />
+        </div>
+        <div className="min-w-0">
+          <p className="font-['Share_Tech_Mono'] text-sm uppercase tracking-[0.22em] text-[#d8ffe0] truncate">
+            Whois
+          </p>
+          <p className="font-['Share_Tech_Mono'] text-[11px] text-[rgba(200,255,208,0.4)] truncate">
+            Domain Registration Lookup
+          </p>
+        </div>
       </div>
 
       <form onSubmit={handleSubmit} className="flex gap-3 mt-1">

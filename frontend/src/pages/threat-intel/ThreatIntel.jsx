@@ -90,23 +90,25 @@ export default function ThreatIntelPage() {
           </div>
         )}
 
-        <AbuseIPDB
-          onResult={setResult}
-          onError={setError}
-          onLoading={setLoading}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <AbuseIPDB
+            onResult={setResult}
+            onError={setError}
+            onLoading={setLoading}
+          />
 
-        <IPTracker
-          onResult={setResult}
-          onError={setError}
-          onLoading={setLoading}
-        />
+          <IPTracker
+            onResult={setResult}
+            onError={setError}
+            onLoading={setLoading}
+          />
 
-        <Dorks
-          onResult={setResult}
-          onError={setError}
-          onLoading={setLoading}
-        />
+          <Dorks
+            onResult={setResult}
+            onError={setError}
+            onLoading={setLoading}
+          />
+        </div>
       </div>
 
       {/* Right column */}
