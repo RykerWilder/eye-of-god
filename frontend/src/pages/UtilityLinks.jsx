@@ -6,6 +6,7 @@ const linkGroups = [
     links: [
       { name: 'Shodan',          url: 'https://shodan.io',             desc: 'Internet-wide device & service scanner.' },
       { name: 'Maltego',         url: 'https://maltego.com',           desc: 'Visual link analysis and OSINT graph mapping.' },
+      { name: 'OSINT4ALL',      url: 'https://start.me/p/L1rEYQ/osint4all', desc: 'Curated hub of OSINT tools & resources by category.' },
       { name: 'Osiris',          url: 'https://osirisai.live',         desc: 'Global Intelligence Platform'},
       { name: 'Yandex',          url: 'https://yandex.com',            desc: 'Search engine' },
       { name: 'DNSDumpster',     url: 'https://dnsdumpster.com',       desc: 'DNS recon & domain mapping.' },
