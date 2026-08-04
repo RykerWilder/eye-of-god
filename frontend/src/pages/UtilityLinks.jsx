@@ -20,6 +20,7 @@ const linkGroups = [
       { name: 'OTX AlienVault',  url: 'https://otx.alienvault.com',    desc: 'Open threat exchange & IoC feeds.' },
       { name: 'Wayback Machine', url: 'https://web.archive.org',       desc: 'Historical snapshots of web pages and domains.' },
       { name: 'Threat Fox',      url: 'https://threatfox.abuse.ch',    desc: 'IoC sharing platform by abuse.ch.' },
+      { name: 'HaveIBeenPwned',  url: 'https://haveibeenpwned.com',    desc: 'Check emails & passwords against breach data.' },
     ],
   },
   {
@@ -39,6 +40,14 @@ const linkGroups = [
       { name: 'SSL Labs',        url: 'https://ssllabs.com/ssltest',      desc: 'SSL/TLS certificate grader.' },
       { name: 'Regex101',        url: 'https://regex101.com',             desc: 'Regex builder and tester.' },
       { name: 'ExifTool',        url: 'https://exiftool.org',             desc: 'Read and strip metadata from files and images.' },
+    ],
+  },
+  {
+    category: 'Privacy & Data Protection',
+    links: [
+      { name: 'JustDeleteMe',        url: 'https://justdeleteme.xyz',           desc: 'Directory of direct links to delete accounts.' },
+      { name: 'Google My Activity',  url: 'https://myactivity.google.com',      desc: 'Review & manage your Google activity data.' },
+      { name: 'Cover Your Tracks',   url: 'https://coveryourtracks.eff.org',    desc: 'EFF tool to test browser fingerprinting & trackers.' },
     ],
   },
   {
